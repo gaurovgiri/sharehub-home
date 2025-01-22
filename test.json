@@ -1,0 +1,621 @@
+{
+    "marketStatus": {
+        "status": "CLOSE",
+        "time": "2025-01-21T15:00:00Z"
+    },
+    "marketSummary": [
+        {
+            "name": "Total Turnover Rs:",
+            "value": 6190141891.18
+        },
+        {
+            "name": "Total Traded Shares",
+            "value": 11626020
+        },
+        {
+            "name": "Total Transactions",
+            "value": 69840
+        },
+        {
+            "name": "Total Scrips Traded",
+            "value": 311
+        },
+        {
+            "name": "Total Market Capitalization Rs:",
+            "value": 4334315345002.2
+        },
+        {
+            "name": "Total Float Market Capitalization Rs:",
+            "value": 1444366134799.8
+        }
+    ],
+    "stockSummary": {
+        "advanced": 126,
+        "declined": 167,
+        "unchanged": 18,
+        "positiveCircuit": 1,
+        "negativeCircuit": 0
+    },
+    "indices": [
+        {
+            "name": "NEPSE",
+            "symbol": "NEPSE",
+            "currentValue": 2613.08,
+            "change": 5.08,
+            "changePercent": 0.19,
+            "sector": null
+        },
+        {
+            "name": "Float",
+            "symbol": "FLOAT",
+            "currentValue": 176.51,
+            "change": 0.22,
+            "changePercent": 0.12,
+            "sector": null
+        },
+        {
+            "name": "Sensitive",
+            "symbol": "SENSITIVE",
+            "currentValue": 440.14,
+            "change": 1,
+            "changePercent": 0.22,
+            "sector": null
+        },
+        {
+            "name": "Sensitive Float",
+            "symbol": "SENFLOAT",
+            "currentValue": 147.1,
+            "change": 0.21,
+            "changePercent": 0.14,
+            "sector": null
+        }
+    ],
+    "subIndices": [
+        {
+            "name": "Banking",
+            "symbol": "BANKING",
+            "currentValue": 1341.32,
+            "change": -4.78,
+            "changePercent": -0.35,
+            "sector": "Commercial Banks"
+        },
+        {
+            "name": "Development Bank",
+            "symbol": "DEVBANK",
+            "currentValue": 5367.78,
+            "change": 10.68,
+            "changePercent": 0.19,
+            "sector": "Development Banks"
+        },
+        {
+            "name": "Finance",
+            "symbol": "FINANCE",
+            "currentValue": 2605.42,
+            "change": -27.16,
+            "changePercent": -1.03,
+            "sector": "Finance"
+        },
+        {
+            "name": "Hotels And Tourism",
+            "symbol": "HOTELS",
+            "currentValue": 6700.66,
+            "change": 52.08,
+            "changePercent": 0.78,
+            "sector": "Hotels And Tourism"
+        },
+        {
+            "name": "HydroPower",
+            "symbol": "HYDROPOWER",
+            "currentValue": 3649.5,
+            "change": -34.02,
+            "changePercent": -0.92,
+            "sector": "Hydro Power"
+        },
+        {
+            "name": "Investment",
+            "symbol": "INVESTMENT",
+            "currentValue": 101.29,
+            "change": 0.74,
+            "changePercent": 0.74,
+            "sector": "Investment"
+        },
+        {
+            "name": "Life Insurance",
+            "symbol": "LIFEINSU",
+            "currentValue": 12833.4,
+            "change": 139.68,
+            "changePercent": 1.1,
+            "sector": "Life Insurance"
+        },
+        {
+            "name": "Manufacturing And Processing",
+            "symbol": "MANUFACTURE",
+            "currentValue": 7074.38,
+            "change": 62.96,
+            "changePercent": 0.89,
+            "sector": "Manufacturing And Processing"
+        },
+        {
+            "name": "Microfinance",
+            "symbol": "MICROFINANCE",
+            "currentValue": 4851.51,
+            "change": 1.58,
+            "changePercent": 0.03,
+            "sector": "Microfinance"
+        },
+        {
+            "name": "Mutual Fund",
+            "symbol": "MUTUAL",
+            "currentValue": 20.04,
+            "change": -0.09,
+            "changePercent": -0.48,
+            "sector": "Mutual Fund"
+        },
+        {
+            "name": "Non Life Insurance",
+            "symbol": "NONLIFEINSU",
+            "currentValue": 12755.9,
+            "change": 223.76,
+            "changePercent": 1.78,
+            "sector": "Non Life Insurance"
+        },
+        {
+            "name": "Others",
+            "symbol": "OTHERS",
+            "currentValue": 2005.58,
+            "change": 54.57,
+            "changePercent": 2.79,
+            "sector": "Others"
+        },
+        {
+            "name": "Trading",
+            "symbol": "TRADING",
+            "currentValue": 4364.48,
+            "change": -93.79,
+            "changePercent": -2.1,
+            "sector": "Tradings"
+        }
+    ],
+    "topGainers": [
+        {
+            "symbol": "MHL",
+            "name": "Mandakini Hydropower Limited",
+            "icon": "sharehub/images/2024/08/25/061106-mhl-logo.png",
+            "lastTradedPrice": 1006.5,
+            "change": 91.5,
+            "changePercent": 10
+        },
+        {
+            "symbol": "SAPDBL",
+            "name": "Saptakoshi Development Bank Ltd",
+            "icon": "sharehub/images/2024/09/04/032641-sapdbl-logo.png",
+            "lastTradedPrice": 1273,
+            "change": 95,
+            "changePercent": 8.06
+        },
+        {
+            "symbol": "NYADI",
+            "name": "Nyadi Hydropower Limited",
+            "icon": "sharehub/images/2024/09/05/022947-nyadi-logo.png",
+            "lastTradedPrice": 600,
+            "change": 42,
+            "changePercent": 7.53
+        },
+        {
+            "symbol": "CHDC",
+            "name": "CEDB Holdings Limited",
+            "icon": "sharehub/images/2024/09/05/053449-chdc-logo.png",
+            "lastTradedPrice": 1775,
+            "change": 115,
+            "changePercent": 6.93
+        },
+        {
+            "symbol": "NRIC",
+            "name": "Nepal Reinsurance Company Limited",
+            "icon": "sharehub/icons/2024/08/06/110027-nric-logo.png",
+            "lastTradedPrice": 870.9,
+            "change": 47.9,
+            "changePercent": 5.82
+        },
+        {
+            "symbol": "HPPL",
+            "name": "Himalayan Power Partner Ltd.",
+            "icon": "sharehub/icons/2024/01/12/090039-hppl.png",
+            "lastTradedPrice": 514,
+            "change": 27,
+            "changePercent": 5.54
+        },
+        {
+            "symbol": "MKCL",
+            "name": "Muktinath Krishi Company Limited",
+            "icon": "sharehub/icons/2024/01/12/040707-muktinath-krishi-logo.png",
+            "lastTradedPrice": 1564,
+            "change": 71,
+            "changePercent": 4.76
+        },
+        {
+            "symbol": "HEI",
+            "name": "Himalayan Everest Insurance Limited",
+            "icon": "sharehub/icons/2024/08/13/091126-heip.png",
+            "lastTradedPrice": 642.6,
+            "change": 26.6,
+            "changePercent": 4.32
+        },
+        {
+            "symbol": "MMKJL",
+            "name": "Mathillo Mailun Khola Jalvidhyut Limited",
+            "icon": "sharehub/images/2025/01/21/042656-mathillo-mailung-khola-hydro-logo.png",
+            "lastTradedPrice": 775,
+            "change": 32,
+            "changePercent": 4.31
+        },
+        {
+            "symbol": "NWCL",
+            "name": "Nepal Warehousing Company Limited ",
+            "icon": "sharehub/icons/2024/01/12/034911-nepal-warehouseing-logo.png",
+            "lastTradedPrice": 1000,
+            "change": 41.1,
+            "changePercent": 4.29
+        }
+    ],
+    "topLosers": [
+        {
+            "symbol": "RFPL",
+            "name": "River Falls Power Limited",
+            "icon": "sharehub/icons/2024/01/12/090041-rfpl.png",
+            "lastTradedPrice": 1209,
+            "change": -119,
+            "changePercent": -8.96
+        },
+        {
+            "symbol": "LBBLD89",
+            "name": "11% L.B.B.L. Debenture 2089",
+            "icon": "sharehub/images/2025/01/21/024114-lumbini-bikas-bank-logo.png",
+            "lastTradedPrice": 1082,
+            "change": -83,
+            "changePercent": -7.12
+        },
+        {
+            "symbol": "MLBS",
+            "name": "Manushi Laghubitta Bittiya Sanstha Limited",
+            "icon": "sharehub/icons/2024/01/12/090128-mlbs.png",
+            "lastTradedPrice": 2168,
+            "change": -157,
+            "changePercent": -6.75
+        },
+        {
+            "symbol": "JBBLPO",
+            "name": "Jyoti Bikash  Bank Ltd. Promoter Share",
+            "icon": "sharehub/images/2025/01/21/041118-jyoti-bikas-bank-logo.png",
+            "lastTradedPrice": 188.3,
+            "change": -11.7,
+            "changePercent": -5.85
+        },
+        {
+            "symbol": "CIZBD90",
+            "name": "10% Citizens Bank Debenture 2090",
+            "icon": "sharehub/images/2024/12/26/012250-citizens-bank-logo.png",
+            "lastTradedPrice": 1113,
+            "change": -68,
+            "changePercent": -5.76
+        },
+        {
+            "symbol": "JFL",
+            "name": "Janaki Finance Company Limited",
+            "icon": "sharehub/icons/2024/01/12/090158-jflpo.png",
+            "lastTradedPrice": 516,
+            "change": -31,
+            "changePercent": -5.67
+        },
+        {
+            "symbol": "NABBC",
+            "name": "Narayani Development Bank Limited",
+            "icon": "sharehub/icons/2024/01/12/090134-nabbc.png",
+            "lastTradedPrice": 1140,
+            "change": -65,
+            "changePercent": -5.39
+        },
+        {
+            "symbol": "PFL",
+            "name": "Pokhara Finance Ltd.",
+            "icon": "sharehub/icons/2024/01/12/090211-pflpo.png",
+            "lastTradedPrice": 402,
+            "change": -21.3,
+            "changePercent": -5.03
+        },
+        {
+            "symbol": "BEDC",
+            "name": "Bhugol Energy Development Company Limited",
+            "icon": "sharehub/images/2024/09/07/043138-bedc-logo.png",
+            "lastTradedPrice": 740,
+            "change": -35.8,
+            "changePercent": -4.61
+        },
+        {
+            "symbol": "WNLB",
+            "name": "Wean Nepal Laghubitta Bittiya Sanstha Limited",
+            "icon": "sharehub/images/2024/08/25/062628-wean-logo.png",
+            "lastTradedPrice": 2841,
+            "change": -129,
+            "changePercent": -4.34
+        }
+    ],
+    "topTurnover": [
+        {
+            "symbol": "CHDC",
+            "name": "CEDB Holdings Limited",
+            "icon": "sharehub/images/2024/09/05/053449-chdc-logo.png",
+            "turnover": 237635292.4,
+            "lastTradedPrice": 1775,
+            "change": 115,
+            "changePercent": 6.93
+        },
+        {
+            "symbol": "SAPDBL",
+            "name": "Saptakoshi Development Bank Ltd",
+            "icon": "sharehub/images/2024/09/04/032641-sapdbl-logo.png",
+            "turnover": 216697760.3,
+            "lastTradedPrice": 1273,
+            "change": 95,
+            "changePercent": 8.06
+        },
+        {
+            "symbol": "NRIC",
+            "name": "Nepal Reinsurance Company Limited",
+            "icon": "sharehub/icons/2024/08/06/110027-nric-logo.png",
+            "turnover": 205360521.7,
+            "lastTradedPrice": 870.9,
+            "change": 47.9,
+            "changePercent": 5.82
+        },
+        {
+            "symbol": "SMHL",
+            "name": "Super Madi Hydropower Limited",
+            "icon": "sharehub/images/2024/09/25/072907-smhl-logo.png",
+            "turnover": 164351664.9,
+            "lastTradedPrice": 1306,
+            "change": -22.4,
+            "changePercent": -1.69
+        },
+        {
+            "symbol": "MMKJL",
+            "name": "Mathillo Mailun Khola Jalvidhyut Limited",
+            "icon": "sharehub/images/2025/01/21/042656-mathillo-mailung-khola-hydro-logo.png",
+            "turnover": 158362686.9,
+            "lastTradedPrice": 775,
+            "change": 32,
+            "changePercent": 4.31
+        },
+        {
+            "symbol": "NYADI",
+            "name": "Nyadi Hydropower Limited",
+            "icon": "sharehub/images/2024/09/05/022947-nyadi-logo.png",
+            "turnover": 156047899.5,
+            "lastTradedPrice": 600,
+            "change": 42,
+            "changePercent": 7.53
+        },
+        {
+            "symbol": "HPPL",
+            "name": "Himalayan Power Partner Ltd.",
+            "icon": "sharehub/icons/2024/01/12/090039-hppl.png",
+            "turnover": 141496881.6,
+            "lastTradedPrice": 514,
+            "change": 27,
+            "changePercent": 5.54
+        },
+        {
+            "symbol": "HRL",
+            "name": "Himalayan Reinsurance Limited",
+            "icon": "sharehub/images/2024/08/08/062033-himalayan-re.png",
+            "turnover": 138981525.4,
+            "lastTradedPrice": 838,
+            "change": 19.9,
+            "changePercent": 2.43
+        },
+        {
+            "symbol": "NRN",
+            "name": "NRN Infrastructure and Development Limited",
+            "icon": "sharehub/images/2024/08/30/063310-nrn-logo.png",
+            "turnover": 133832653.3,
+            "lastTradedPrice": 1172,
+            "change": 6,
+            "changePercent": 0.51
+        },
+        {
+            "symbol": "SARBTM",
+            "name": "Sarbottam Cement Limited",
+            "icon": "sharehub/images/2024/09/07/040354-sarbtm-logo.png",
+            "turnover": 97645214.2,
+            "lastTradedPrice": 785.1,
+            "change": 27.1,
+            "changePercent": 3.58
+        }
+    ],
+    "topTradedShares": [
+        {
+            "symbol": "PSF",
+            "name": "Prabhu Select Fund",
+            "icon": "sharehub/images/2024/12/24/014601-prabhu-bank-logo.png",
+            "sharesTraded": 475900,
+            "lastTradedPrice": 10.04,
+            "change": -0.01,
+            "changePercent": -0.1
+        },
+        {
+            "symbol": "HPPL",
+            "name": "Himalayan Power Partner Ltd.",
+            "icon": "sharehub/icons/2024/01/12/090039-hppl.png",
+            "sharesTraded": 282077,
+            "lastTradedPrice": 514,
+            "change": 27,
+            "changePercent": 5.54
+        },
+        {
+            "symbol": "NYADI",
+            "name": "Nyadi Hydropower Limited",
+            "icon": "sharehub/images/2024/09/05/022947-nyadi-logo.png",
+            "sharesTraded": 265031,
+            "lastTradedPrice": 600,
+            "change": 42,
+            "changePercent": 7.53
+        },
+        {
+            "symbol": "KBL",
+            "name": "Kumari Bank Limited",
+            "icon": "sharehub/icons/2024/08/18/074600-kbl-logo.png",
+            "sharesTraded": 260501,
+            "lastTradedPrice": 196,
+            "change": -5.4,
+            "changePercent": -2.68
+        },
+        {
+            "symbol": "NRIC",
+            "name": "Nepal Reinsurance Company Limited",
+            "icon": "sharehub/icons/2024/08/06/110027-nric-logo.png",
+            "sharesTraded": 239210,
+            "lastTradedPrice": 870.9,
+            "change": 47.9,
+            "changePercent": 5.82
+        },
+        {
+            "symbol": "MMKJL",
+            "name": "Mathillo Mailun Khola Jalvidhyut Limited",
+            "icon": "sharehub/images/2025/01/21/042656-mathillo-mailung-khola-hydro-logo.png",
+            "sharesTraded": 205830,
+            "lastTradedPrice": 775,
+            "change": 32,
+            "changePercent": 4.31
+        },
+        {
+            "symbol": "SAPDBL",
+            "name": "Saptakoshi Development Bank Ltd",
+            "icon": "sharehub/images/2024/09/04/032641-sapdbl-logo.png",
+            "sharesTraded": 182543,
+            "lastTradedPrice": 1273,
+            "change": 95,
+            "changePercent": 8.06
+        },
+        {
+            "symbol": "HRL",
+            "name": "Himalayan Reinsurance Limited",
+            "icon": "sharehub/images/2024/08/08/062033-himalayan-re.png",
+            "sharesTraded": 166530,
+            "lastTradedPrice": 838,
+            "change": 19.9,
+            "changePercent": 2.43
+        },
+        {
+            "symbol": "SHIVM",
+            "name": "SHIVAM CEMENTS LTD",
+            "icon": "sharehub/icons/2024/08/08/064254-shivm-logo.png",
+            "sharesTraded": 162518,
+            "lastTradedPrice": 556.4,
+            "change": 14.2,
+            "changePercent": 2.62
+        },
+        {
+            "symbol": "SBI",
+            "name": "Nepal SBI Bank Limited",
+            "icon": "sharehub/images/2025/01/13/102340-nepal-sbi-bank-logo.png",
+            "sharesTraded": 153589,
+            "lastTradedPrice": 425,
+            "change": 0.1,
+            "changePercent": 0.02
+        }
+    ],
+    "topTransactions": [
+        {
+            "symbol": "HRL",
+            "name": "Himalayan Reinsurance Limited",
+            "icon": "sharehub/images/2024/08/08/062033-himalayan-re.png",
+            "transactions": 1989,
+            "lastTradedPrice": 838,
+            "change": 19.9,
+            "changePercent": 2.43
+        },
+        {
+            "symbol": "NRIC",
+            "name": "Nepal Reinsurance Company Limited",
+            "icon": "sharehub/icons/2024/08/06/110027-nric-logo.png",
+            "transactions": 1772,
+            "lastTradedPrice": 870.9,
+            "change": 47.9,
+            "changePercent": 5.82
+        },
+        {
+            "symbol": "NYADI",
+            "name": "Nyadi Hydropower Limited",
+            "icon": "sharehub/images/2024/09/05/022947-nyadi-logo.png",
+            "transactions": 1457,
+            "lastTradedPrice": 600,
+            "change": 42,
+            "changePercent": 7.53
+        },
+        {
+            "symbol": "NFS",
+            "name": "Nepal Finance Ltd.",
+            "icon": "sharehub/icons/2024/08/04/084447-nfs-logo.png",
+            "transactions": 1264,
+            "lastTradedPrice": 755,
+            "change": 15,
+            "changePercent": 2.03
+        },
+        {
+            "symbol": "SONA",
+            "name": "Sonapur Minerals And Oil Limited",
+            "icon": "sharehub/icons/2024/01/12/033135-sonapur-logo.png",
+            "transactions": 1199,
+            "lastTradedPrice": 475,
+            "change": 10.1,
+            "changePercent": 2.17
+        },
+        {
+            "symbol": "JFL",
+            "name": "Janaki Finance Company Limited",
+            "icon": "sharehub/icons/2024/01/12/090158-jflpo.png",
+            "transactions": 1177,
+            "lastTradedPrice": 516,
+            "change": -31,
+            "changePercent": -5.67
+        },
+        {
+            "symbol": "CHDC",
+            "name": "CEDB Holdings Limited",
+            "icon": "sharehub/images/2024/09/05/053449-chdc-logo.png",
+            "transactions": 1166,
+            "lastTradedPrice": 1775,
+            "change": 115,
+            "changePercent": 6.93
+        },
+        {
+            "symbol": "SARBTM",
+            "name": "Sarbottam Cement Limited",
+            "icon": "sharehub/images/2024/09/07/040354-sarbtm-logo.png",
+            "transactions": 1021,
+            "lastTradedPrice": 785.1,
+            "change": 27.1,
+            "changePercent": 3.58
+        },
+        {
+            "symbol": "KBL",
+            "name": "Kumari Bank Limited",
+            "icon": "sharehub/icons/2024/08/18/074600-kbl-logo.png",
+            "transactions": 1016,
+            "lastTradedPrice": 196,
+            "change": -5.4,
+            "changePercent": -2.68
+        },
+        {
+            "symbol": "HPPL",
+            "name": "Himalayan Power Partner Ltd.",
+            "icon": "sharehub/icons/2024/01/12/090039-hppl.png",
+            "transactions": 986,
+            "lastTradedPrice": 514,
+            "change": 27,
+            "changePercent": 5.54
+        }
+    ],
+    "demand": [],
+    "supply": []
+}

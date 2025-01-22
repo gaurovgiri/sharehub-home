@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sharehub_home/viewmodel/graph_view_model.dart';
+import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
 import 'package:sharehub_home/viewmodel/theme_view_model.dart';
 import 'package:sharehub_home/views/splash_screen.dart';
 import 'package:sharehub_home/views/main_screen_view.dart';
 
 void main() {
+  Get.put(GraphViewModel(), permanent: true);
+  Get.put(MarketDashboardViewModel(), permanent: true);
   runApp(ShareHub());
 }
 
