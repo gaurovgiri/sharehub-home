@@ -32,7 +32,7 @@ class GraphWidget extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              border: Border.all(color: Colors.grey, width: 1),
+              border: Border.all(color: Colors.grey.shade300, width: 1),
             ),
             width: availableWidth * 0.9,
             child: Card(
@@ -44,7 +44,8 @@ class GraphWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 15, right: 15),
                     child: Column(
                       children: [
                         SizedBox(

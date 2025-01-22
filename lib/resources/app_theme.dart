@@ -38,6 +38,11 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       elevation: 0,
       backgroundColor: Colors.grey[900],
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
     ),
   );
 }

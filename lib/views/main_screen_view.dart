@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sharehub_home/viewmodel/theme_view_model.dart';
 import '../viewmodel/main_screen_view_model.dart';
 
 class MainScreenView extends StatelessWidget {
@@ -8,6 +9,7 @@ class MainScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MainScreenViewModel homeViewModel = Get.put(MainScreenViewModel());
+    final themeViewModel = Get.find<ThemeViewModel>();
 
     return Scaffold(
       appBar: AppBar(
@@ -20,6 +22,13 @@ class MainScreenView extends StatelessWidget {
           ],
         ),
         actions: [
+          Obx(() => IconButton(
+              onPressed: themeViewModel.toggleTheme,
+              icon: Icon(
+                  themeViewModel.isDarkMode.value
+                      ? Icons.wb_sunny
+                      : Icons.dark_mode,
+                  color: Colors.white))),
           TextButton(
               onPressed: () {},
               child: Container(

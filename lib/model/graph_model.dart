@@ -9,11 +9,19 @@ class GraphModel {
     required this.type,
   });
 
-  factory GraphModel.fromJson(List<dynamic> json, type) {
+  factory GraphModel.fromJson(List<dynamic> json, String type) {
     return GraphModel(
-      type: type,
       time: DateTime.fromMillisecondsSinceEpoch(json[0] * 1000),
       value: json[1].toDouble(),
+      type: type,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'time': time.millisecondsSinceEpoch ~/ 1000,
+      'value': value,
+      'type': type,
+    };
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class FloatingNav extends StatelessWidget {
+class FloatingNav extends StatelessWidget implements PreferredSizeWidget {
   const FloatingNav({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 20),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: Card(
@@ -55,4 +55,8 @@ class FloatingNav extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize =>
+      Size.fromHeight(60.0); // Adjust the height as needed
 }
