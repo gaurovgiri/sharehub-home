@@ -43,7 +43,7 @@ class Labels extends StatelessWidget {
                 bottom: 4.0,
                 top: label!.isNotEmpty ? 0 : 4.0),
             child: Text(
-              value!,
+              value ?? "",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 10,

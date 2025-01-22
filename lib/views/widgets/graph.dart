@@ -19,13 +19,6 @@ class GraphWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      var index = 0;
-      String? selectedValue = market.marketData.value.indices?[index].name;
-
-      if (graphData.isLoading.value) {
-        return const Center(child: CircularProgressIndicator());
-      }
-
       final data = graphData.graphData;
       if (data.isEmpty) {
         return const Center(child: Text('No data available'));
@@ -61,23 +54,23 @@ class GraphWidget extends StatelessWidget {
                             children: [
                               DropdownButton<String>(
                                 dropdownColor: Colors.white,
-                                value: selectedValue,
-                                items: const [
-                                  DropdownMenuItem(
-                                    value: 'NEPSE',
-                                    child: Text('NEPSE'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Float',
-                                    child: Text('FLOAT'),
-                                  ),
-                                ],
+                                value: graphData.selectedValue.value,
+                                items: market.marketData.value.indices
+                                    ?.map((index) {
+                                  return DropdownMenuItem(
+                                    value: index.name,
+                                    child: Text(index.name ?? ''),
+                                  );
+                                }).toList(),
                                 onChanged: (value) {
                                   if (value != null) {
-                                    selectedValue = value;
+                                    graphData.updateSelectedValue(value);
                                   }
                                 },
                                 underline: SizedBox(),
+                                icon: Icon(Icons.arrow_drop_down),
+                                iconSize: 24,
+                                elevation: 16,
                               ),
                               IconButton(
                                 onPressed: () {},
@@ -197,32 +190,12 @@ class GraphWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(15),
                       child: LineChart(
                         LineChartData(
-                          gridData: FlGridData(
-                            show: true,
-                            drawVerticalLine: true,
-                            horizontalInterval: 5,
-                            verticalInterval: data.length / 5,
-                            getDrawingHorizontalLine: (value) {
-                              return FlLine(
-                                color: Colors.grey.shade100,
-                                strokeWidth: 1,
-                              );
-                            },
-                            getDrawingVerticalLine: (value) {
-                              return FlLine(
-                                color: Colors.grey.shade100,
-                                strokeWidth: 1,
-                              );
-                            },
-                          ),
                           titlesData: FlTitlesData(
                             show: true,
                             leftTitles: AxisTitles(
-                              sideTitles: SideTitles(
-                                showTitles: false,
-                                interval: 1,
-                              ),
-                            ),
+                                sideTitles: SideTitles(
+                              showTitles: false,
+                            )),
                             topTitles: AxisTitles(
                               sideTitles: SideTitles(showTitles: false),
                             ),
@@ -237,8 +210,23 @@ class GraphWidget extends StatelessWidget {
                                       value.toInt() < 0) {
                                     return const SizedBox.shrink();
                                   }
+                                  String format;
+                                  switch (graphData.selectedTimeFrame.value) {
+                                    case '1W':
+                                      format = 'EEE';
+                                      break;
+                                    case '1M':
+                                    case '2M':
+                                      format = 'MMM';
+                                      break;
+                                    case '1Y':
+                                      format = 'MMM';
+                                      break;
+                                    default:
+                                      format = 'HH:mm';
+                                  }
                                   return Text(
-                                    DateFormat('HH:mm')
+                                    DateFormat(format)
                                         .format(data[value.toInt()].time),
                                     style: const TextStyle(
                                       fontSize: 10,
@@ -250,10 +238,12 @@ class GraphWidget extends StatelessWidget {
                             ),
                             rightTitles: AxisTitles(
                               sideTitles: SideTitles(
+                                maxIncluded: false,
                                 showTitles: true,
                                 minIncluded: false,
                                 reservedSize: 50,
-                                interval: 5,
+                                interval: (_getMaxY(data) - _getMinY(data)) /
+                                    5, // Larger intervals
                                 getTitlesWidget: (value, meta) {
                                   return Text(
                                     value.toStringAsFixed(2),
@@ -299,6 +289,8 @@ class GraphWidget extends StatelessWidget {
                                   end: Alignment.bottomCenter,
                                 ),
                               ),
+                              isStrokeJoinRound: true,
+                              curveSmoothness: 0.2,
                             ),
                           ],
                           lineTouchData: LineTouchData(
@@ -318,8 +310,25 @@ class GraphWidget extends StatelessWidget {
                                 }).toList();
                               },
                             ),
+                            touchCallback: (FlTouchEvent event,
+                                LineTouchResponse? response) {
+                              if (response == null ||
+                                  response.lineBarSpots == null) {
+                                return;
+                              }
+                              final value = response.lineBarSpots!.first.y;
+                              final index =
+                                  response.lineBarSpots!.first.x.toInt();
+                              final time = data[index].time;
+                              // Handle touch event
+                            },
                           ),
+                          // Add animation
+                          showingTooltipIndicators: [],
                         ),
+                        duration: Duration(
+                            milliseconds: 1000), // Add animation duration
+                        curve: Curves.easeInOut, // Add animation curve
                       ),
                     ),
                   ),
@@ -333,23 +342,31 @@ class GraphWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(2.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: ['1D', '1W', '1M', '2M', '1Y'].map((label) {
+                        children: ['1D', '1W', '1M', '3M', '1Y'].map((label) {
                           return Obx(() {
                             final isSelected =
                                 graphData.selectedTimeFrame.value == label;
                             return ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                elevation: isSelected ? 5 : 0,
                                 foregroundColor: Colors.white,
-                                backgroundColor:
-                                    isSelected ? Colors.blue : Colors.grey,
+                                backgroundColor: isSelected
+                                    ? Color(0xFF0B3132)
+                                    : Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
                               onPressed: () {
-                                graphData.selectedTimeFrame.value = label;
+                                graphData.updateSelectedTimeFrame(label);
                               },
-                              child: Text(label),
+                              child: Text(
+                                label,
+                                style: TextStyle(
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.grey),
+                              ),
                             );
                           });
                         }).toList(),

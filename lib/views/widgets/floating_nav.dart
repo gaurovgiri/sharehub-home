@@ -15,13 +15,21 @@ class FloatingNav extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16)),
-              side: BorderSide(color: Colors.grey, width: 0.5)),
+                  bottomRight: Radius.circular(16))),
           margin: EdgeInsets.only(top: 0),
           child: Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.zero),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16)),
+              border: Border(
+                left: BorderSide(color: Colors.grey, width: 0.5),
+                right: BorderSide(color: Colors.grey, width: 0.5),
+                bottom: BorderSide(color: Colors.grey, width: 0.5),
+              ),
+            ),
             padding:
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0),
+                const EdgeInsets.symmetric(horizontal: 14.0, vertical: 0.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

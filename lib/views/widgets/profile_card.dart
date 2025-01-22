@@ -11,8 +11,13 @@ class ProfileCard extends StatelessWidget {
         color: Colors.white,
         margin: EdgeInsets.only(bottom: 0),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: BorderSide(color: Colors.grey, width: 0.5)),
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(
+            color: Colors.grey,
+            width: 0.5,
+            style: BorderStyle.solid,
+          ),
+        ),
         elevation: 3,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
