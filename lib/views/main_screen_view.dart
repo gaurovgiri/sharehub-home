@@ -10,6 +10,30 @@ class MainScreenView extends StatelessWidget {
     final MainScreenViewModel homeViewModel = Get.put(MainScreenViewModel());
 
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Text(
+              "Share Hub",
+              style: TextStyle(color: Colors.white),
+            )
+          ],
+        ),
+        actions: [
+          TextButton(
+              onPressed: () {},
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  "Buy Subscription",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ))
+        ],
+      ),
       body: Obx(() => homeViewModel.pages[homeViewModel.selectedIndex.value]),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             currentIndex: homeViewModel.selectedIndex.value,
