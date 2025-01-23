@@ -22,6 +22,7 @@ class ShareHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() => GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           title: "Share Hub",
           theme: _theme.currentTheme,
           initialRoute: '/splash',

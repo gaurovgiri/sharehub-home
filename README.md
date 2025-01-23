@@ -2,6 +2,9 @@
 
 Share Hub Home Page is a redesigned view for the Home Page of the Share Hub Mobile App. This project is built using Flutter and provides a modern and user-friendly interface for users to interact with the Share Hub platform.
 
+## Figma Design Link
+[Figma Design Link](https://www.figma.com/design/2MBf6mgQPDjUMZayHt9zib/Share-Hub?node-id=0-1&t=N16B6C8laOx4WPjl-1)
+
 ## Features
 
 - **Graph**: Line Graph about the market. The data is fetched every 10 second and the data is updated. It is stored locally as well using `get_storage`.
@@ -32,6 +35,50 @@ To get started with the project, follow these steps:
     ```sh
     flutter run
     ```
+
+
+## Demo
+
+<video width="400" controls>
+    <source src="Screen%20Recording.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+## Folder Structure
+```bash
+lib
+├── main.dart
+├── model
+│   ├── graph_model.dart
+│   ├── market_model.dart
+│   └── watchlist_model.dart
+├── repo
+│   ├── graph_repo.dart
+│   └── market_repo.dart
+├── resources
+│   └── app_theme.dart
+├── viewmodel
+│   ├── graph_view_model.dart
+│   ├── main_screen_view_model.dart
+│   ├── market_dashboard_view_model.dart
+│   └── theme_view_model.dart
+└── views
+    ├── main_screen_view.dart
+    ├── pages
+    │   └── home_page.dart
+    ├── splash_screen.dart
+    └── widgets
+        ├── floating_nav.dart
+        ├── graph.dart
+        ├── labels.dart
+        ├── market_dashboard.dart
+        ├── market_dashboard_two.dart
+        ├── market_summary.dart
+        ├── profile_card.dart
+        └── watch_list.dart
+
+```
 
 ## Dependencies
 
