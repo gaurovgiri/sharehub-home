@@ -80,46 +80,46 @@ class MarketModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (marketStatus != null) {
-      _data["marketStatus"] = marketStatus?.toJson();
+      data["marketStatus"] = marketStatus?.toJson();
     }
     if (marketSummary != null) {
-      _data["marketSummary"] = marketSummary?.map((e) => e.toJson()).toList();
+      data["marketSummary"] = marketSummary?.map((e) => e.toJson()).toList();
     }
     if (stockSummary != null) {
-      _data["stockSummary"] = stockSummary?.toJson();
+      data["stockSummary"] = stockSummary?.toJson();
     }
     if (indices != null) {
-      _data["indices"] = indices?.map((e) => e.toJson()).toList();
+      data["indices"] = indices?.map((e) => e.toJson()).toList();
     }
     if (subIndices != null) {
-      _data["subIndices"] = subIndices?.map((e) => e.toJson()).toList();
+      data["subIndices"] = subIndices?.map((e) => e.toJson()).toList();
     }
     if (topGainers != null) {
-      _data["topGainers"] = topGainers?.map((e) => e.toJson()).toList();
+      data["topGainers"] = topGainers?.map((e) => e.toJson()).toList();
     }
     if (topLosers != null) {
-      _data["topLosers"] = topLosers?.map((e) => e.toJson()).toList();
+      data["topLosers"] = topLosers?.map((e) => e.toJson()).toList();
     }
     if (topTurnover != null) {
-      _data["topTurnover"] = topTurnover?.map((e) => e.toJson()).toList();
+      data["topTurnover"] = topTurnover?.map((e) => e.toJson()).toList();
     }
     if (topTradedShares != null) {
-      _data["topTradedShares"] =
+      data["topTradedShares"] =
           topTradedShares?.map((e) => e.toJson()).toList();
     }
     if (topTransactions != null) {
-      _data["topTransactions"] =
+      data["topTransactions"] =
           topTransactions?.map((e) => e.toJson()).toList();
     }
     if (demand != null) {
-      _data["demand"] = demand;
+      data["demand"] = demand;
     }
     if (supply != null) {
-      _data["supply"] = supply;
+      data["supply"] = supply;
     }
-    return _data;
+    return data;
   }
 }
 
@@ -156,15 +156,15 @@ class TopTransactions {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["symbol"] = symbol;
-    _data["name"] = name;
-    _data["icon"] = icon;
-    _data["transactions"] = transactions;
-    _data["lastTradedPrice"] = lastTradedPrice;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["symbol"] = symbol;
+    data["name"] = name;
+    data["icon"] = icon;
+    data["transactions"] = transactions;
+    data["lastTradedPrice"] = lastTradedPrice;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    return data;
   }
 }
 
@@ -201,15 +201,15 @@ class TopTradedShares {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["symbol"] = symbol;
-    _data["name"] = name;
-    _data["icon"] = icon;
-    _data["sharesTraded"] = sharesTraded;
-    _data["lastTradedPrice"] = lastTradedPrice;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["symbol"] = symbol;
+    data["name"] = name;
+    data["icon"] = icon;
+    data["sharesTraded"] = sharesTraded;
+    data["lastTradedPrice"] = lastTradedPrice;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    return data;
   }
 }
 
@@ -246,15 +246,15 @@ class TopTurnover {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["symbol"] = symbol;
-    _data["name"] = name;
-    _data["icon"] = icon;
-    _data["turnover"] = turnover;
-    _data["lastTradedPrice"] = lastTradedPrice;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["symbol"] = symbol;
+    data["name"] = name;
+    data["icon"] = icon;
+    data["turnover"] = turnover;
+    data["lastTradedPrice"] = lastTradedPrice;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    return data;
   }
 }
 
@@ -288,14 +288,14 @@ class TopLosers {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["symbol"] = symbol;
-    _data["name"] = name;
-    _data["icon"] = icon;
-    _data["lastTradedPrice"] = lastTradedPrice;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["symbol"] = symbol;
+    data["name"] = name;
+    data["icon"] = icon;
+    data["lastTradedPrice"] = lastTradedPrice;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    return data;
   }
 }
 
@@ -329,14 +329,14 @@ class TopGainers {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["symbol"] = symbol;
-    _data["name"] = name;
-    _data["icon"] = icon;
-    _data["lastTradedPrice"] = lastTradedPrice;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["symbol"] = symbol;
+    data["name"] = name;
+    data["icon"] = icon;
+    data["lastTradedPrice"] = lastTradedPrice;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    return data;
   }
 }
 
@@ -370,14 +370,14 @@ class SubIndices {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["name"] = name;
-    _data["symbol"] = symbol;
-    _data["currentValue"] = currentValue;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    _data["sector"] = sector;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = name;
+    data["symbol"] = symbol;
+    data["currentValue"] = currentValue;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    data["sector"] = sector;
+    return data;
   }
 }
 
@@ -411,14 +411,14 @@ class Indices {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["name"] = name;
-    _data["symbol"] = symbol;
-    _data["currentValue"] = currentValue;
-    _data["change"] = change;
-    _data["changePercent"] = changePercent;
-    _data["sector"] = sector;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = name;
+    data["symbol"] = symbol;
+    data["currentValue"] = currentValue;
+    data["change"] = change;
+    data["changePercent"] = changePercent;
+    data["sector"] = sector;
+    return data;
   }
 }
 
@@ -449,13 +449,13 @@ class StockSummary {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["advanced"] = advanced;
-    _data["declined"] = declined;
-    _data["unchanged"] = unchanged;
-    _data["positiveCircuit"] = positiveCircuit;
-    _data["negativeCircuit"] = negativeCircuit;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["advanced"] = advanced;
+    data["declined"] = declined;
+    data["unchanged"] = unchanged;
+    data["positiveCircuit"] = positiveCircuit;
+    data["negativeCircuit"] = negativeCircuit;
+    return data;
   }
 }
 
@@ -475,10 +475,10 @@ class MarketSummary {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["name"] = name;
-    _data["value"] = value;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = name;
+    data["value"] = value;
+    return data;
   }
 }
 
@@ -498,9 +498,9 @@ class MarketStatus {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["status"] = status;
-    _data["time"] = time;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["status"] = status;
+    data["time"] = time;
+    return data;
   }
 }

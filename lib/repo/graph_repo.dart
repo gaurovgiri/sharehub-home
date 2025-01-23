@@ -30,12 +30,12 @@ class GraphRepo {
           "https://arthakendra.com/data/api/v1/price-history/graph/$selectedValue?time=$timeFrame&queryKey=$selectedValue");
       if (response.statusCode == 200) {
         List<GraphModel> graphData = [];
-        for (var data in response.data['data']) {
-          dynamic _data = [
-            DateTime.parse(data['date']).millisecondsSinceEpoch,
-            data['value']
+        for (var item in response.data['data']) {
+          dynamic data = [
+            DateTime.parse(item['date']).millisecondsSinceEpoch,
+            item['value']
           ];
-          graphData.add(GraphModel.fromJson(_data, timeFrame));
+          graphData.add(GraphModel.fromJson(data, timeFrame));
         }
         return graphData;
       } else {

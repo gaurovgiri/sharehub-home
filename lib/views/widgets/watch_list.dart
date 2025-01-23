@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:sharehub_home/model/graph_model.dart';
 import 'package:sharehub_home/viewmodel/graph_view_model.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 
 class WatchList extends StatelessWidget {
   WatchList({super.key}) {
@@ -19,6 +19,7 @@ class WatchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Obx(() {
       var data = graphData.graphDataMap["1D_NEPSE"];
       return Padding(
@@ -26,16 +27,17 @@ class WatchList extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
-              border: Border.all(color: Colors.grey.shade300, width: 1)),
+              border:
+                  Border.all(color: AppTheme.borderColor.shade300, width: 1)),
           height: 320,
           width: MediaQuery.of(context).size.width * 0.9,
           child: Card(
             margin: EdgeInsets.zero,
-            color: Colors.white,
+            color: theme.cardColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
               side: BorderSide(
-                color: Colors.grey.shade300,
+                color: AppTheme.borderColor.shade300,
                 width: 1,
               ),
             ),
@@ -76,15 +78,15 @@ class WatchList extends StatelessWidget {
                       return Container(
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: theme.cardColor,
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
-                            color: Colors.grey.shade300,
+                            color: AppTheme.borderColor.shade300,
                             width: 1,
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.shade200,
+                              color: AppTheme.shadowColor.shade200,
                               blurRadius: 4,
                               offset: Offset(0, 4),
                             ),
@@ -120,7 +122,8 @@ class WatchList extends StatelessWidget {
                                         children: [
                                           Text(
                                             topGainer.symbol ?? "",
-                                            style: TextStyle(
+                                            style: theme.textTheme.bodyLarge
+                                                ?.copyWith(
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold,
                                             ),
@@ -131,7 +134,8 @@ class WatchList extends StatelessWidget {
                                             style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.bold,
-                                              color: Colors.green,
+                                              color:
+                                                  AppTheme.textHighlightColor,
                                             ),
                                           )
                                         ],
@@ -143,7 +147,8 @@ class WatchList extends StatelessWidget {
                                           topGainer.name ?? "",
                                           style: TextStyle(
                                             fontSize: 12,
-                                            color: Colors.grey.shade600,
+                                            color: AppTheme
+                                                .textSecondaryColor.shade600,
                                           ),
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -175,7 +180,7 @@ class WatchList extends StatelessWidget {
                                           interval:
                                               (data!.length / 5).ceilToDouble(),
                                           getTitlesWidget: (value, meta) {
-                                            if (value.toInt() >= data!.length ||
+                                            if (value.toInt() >= data.length ||
                                                 value.toInt() < 0) {
                                               return const SizedBox.shrink();
                                             }
@@ -214,7 +219,7 @@ class WatchList extends StatelessWidget {
                                     borderData: FlBorderData(
                                       show: true,
                                       border: Border.all(
-                                        color: Colors.grey.shade200,
+                                        color: AppTheme.borderColor.shade200,
                                       ),
                                     ),
                                     minX: 0,
@@ -257,18 +262,18 @@ class WatchList extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Change: ${topGainer.change.toString()}',
-                                    style: TextStyle(
+                                    style: theme.textTheme.bodyLarge?.copyWith(
                                       fontSize: 9,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    'LTP: ${topGainer.lastTradedPrice.toString()}',
-                                    style: TextStyle(
-                                      fontSize: 9,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                                      'LTP: ${topGainer.lastTradedPrice.toString()}',
+                                      style:
+                                          theme.textTheme.bodyLarge?.copyWith(
+                                        fontSize: 9,
+                                        fontWeight: FontWeight.bold,
+                                      )),
                                 ],
                               ),
                             ],

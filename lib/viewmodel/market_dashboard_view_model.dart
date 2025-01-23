@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sharehub_home/model/market_model.dart';
 import 'package:sharehub_home/repo/market_repo.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:flutter/material.dart';
 
 class MarketDashboardViewModel extends GetxController {
   final MarketRepository _marketRepository = MarketRepository();
@@ -13,6 +14,8 @@ class MarketDashboardViewModel extends GetxController {
   var dashboardTwoData = MarketModel().obs;
   var selectedCategoryTwo = "Top Turnover".obs;
   final box = GetStorage();
+  var marketStatusColor = Colors.red.obs;
+  var valueStatus = false.obs;
 
   @override
   void onInit() {
@@ -39,6 +42,10 @@ class MarketDashboardViewModel extends GetxController {
     var data = await _marketRepository.fetch();
     if (data != null) {
       marketData.value = data;
+      marketStatusColor.value = data.marketStatus!.status!.contains("OPEN")
+          ? Colors.green
+          : Colors.red;
+      valueStatus.value = (data.indices?[0].change ?? 0) > 0;
     }
     isLoading.value = false;
   }

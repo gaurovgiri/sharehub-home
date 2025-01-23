@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 
 class FloatingNav extends StatelessWidget implements PreferredSizeWidget {
   const FloatingNav({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.6,
         child: Card(
-          color: Colors.white,
+          color: theme.cardColor,
           elevation: 3,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -23,9 +25,9 @@ class FloatingNav extends StatelessWidget implements PreferredSizeWidget {
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16)),
               border: Border(
-                left: BorderSide(color: Colors.grey, width: 0.5),
-                right: BorderSide(color: Colors.grey, width: 0.5),
-                bottom: BorderSide(color: Colors.grey, width: 0.5),
+                left: BorderSide(color: AppTheme.borderColor, width: 0.5),
+                right: BorderSide(color: AppTheme.borderColor, width: 0.5),
+                bottom: BorderSide(color: AppTheme.borderColor, width: 0.5),
               ),
             ),
             padding:
@@ -57,6 +59,5 @@ class FloatingNav extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight(60.0); // Adjust the height as needed
+  Size get preferredSize => Size.fromHeight(60.0);
 }

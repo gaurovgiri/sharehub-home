@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sharehub_home/viewmodel/theme_view_model.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 import '../viewmodel/main_screen_view_model.dart';
 
 class MainScreenView extends StatelessWidget {
@@ -17,7 +18,7 @@ class MainScreenView extends StatelessWidget {
           children: [
             Text(
               "Share Hub",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: AppTheme.textAccentColor),
             )
           ],
         ),
@@ -28,7 +29,7 @@ class MainScreenView extends StatelessWidget {
                   themeViewModel.isDarkMode.value
                       ? Icons.wb_sunny
                       : Icons.dark_mode,
-                  color: Colors.white))),
+                  color: AppTheme.textAccentColor))),
           TextButton(
               onPressed: () {},
               child: Container(
@@ -38,7 +39,7 @@ class MainScreenView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 child: Text(
                   "Buy Subscription",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: AppTheme.textColor),
                 ),
               ))
         ],

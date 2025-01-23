@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 
 class Labels extends StatelessWidget {
   final String? label;
@@ -6,11 +7,11 @@ class Labels extends StatelessWidget {
   final Color colors;
 
   const Labels({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
     required this.colors,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class Labels extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: colors,
-        border: Border.all(color: Colors.grey, width: 1),
+        border: Border.all(color: AppTheme.borderColor, width: 1),
       ),
       child: Column(
         children: [
@@ -29,7 +30,7 @@ class Labels extends StatelessWidget {
                   child: Text(
                     label ?? "",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppTheme.textAccentColor,
                       fontSize: 10,
                       fontWeight: FontWeight.w800,
                     ),
@@ -45,7 +46,7 @@ class Labels extends StatelessWidget {
             child: Text(
               value ?? "",
               style: TextStyle(
-                color: Colors.white,
+                color: AppTheme.textAccentColor,
                 fontSize: 10,
                 fontWeight: FontWeight.w800,
               ),

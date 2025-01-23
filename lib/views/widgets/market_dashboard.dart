@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 
 class MarketDashBoard extends StatelessWidget {
   const MarketDashBoard({super.key});
@@ -9,23 +9,23 @@ class MarketDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final market = Get.find<MarketDashboardViewModel>();
-
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          border: Border.all(color: Colors.grey.shade300, width: 1),
+          border: Border.all(color: AppTheme.borderColor.shade300, width: 1),
         ),
         height: 400,
         width: MediaQuery.of(context).size.width * 0.9,
         child: Card(
           margin: EdgeInsets.zero,
-          color: Colors.white,
+          color: theme.cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
             side: BorderSide(
-              color: Colors.grey.shade300,
+              color: AppTheme.borderColor.shade300,
               width: 1,
             ),
           ),
@@ -47,8 +47,9 @@ class MarketDashBoard extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               elevation: isSelected ? 5 : 0,
                               foregroundColor: Colors.white,
-                              backgroundColor:
-                                  isSelected ? Color(0xFF0B3132) : Colors.white,
+                              backgroundColor: isSelected
+                                  ? AppTheme.primaryColor
+                                  : Colors.transparent,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
@@ -59,7 +60,9 @@ class MarketDashBoard extends StatelessWidget {
                             child: Text(
                               label,
                               style: TextStyle(
-                                color: isSelected ? Colors.white : Colors.grey,
+                                color: isSelected
+                                    ? AppTheme.textAccentColor
+                                    : AppTheme.textSecondaryColor,
                               ),
                             ),
                           ),
@@ -84,6 +87,7 @@ class MarketDashBoard extends StatelessWidget {
                     ],
                     rows: data!.take(5).map((item) {
                       final itemData = item as dynamic;
+                      final isPositive = itemData.change > 0;
                       return DataRow(cells: [
                         DataCell(Row(
                           children: [
@@ -106,9 +110,24 @@ class MarketDashBoard extends StatelessWidget {
                             ),
                           ],
                         )),
-                        DataCell(Text(itemData.change.toString())),
-                        DataCell(Text('${itemData.changePercent}%')),
-                        DataCell(Text(itemData.lastTradedPrice.toString())),
+                        DataCell(Text(
+                          itemData.change.toString(),
+                          style: TextStyle(
+                            color: isPositive
+                                ? AppTheme.textHighlightColor
+                                : AppTheme.textErrorColor,
+                          ),
+                        )),
+                        DataCell(Text(
+                          '${itemData.changePercent}%',
+                          style: TextStyle(
+                            color: isPositive
+                                ? AppTheme.textHighlightColor
+                                : AppTheme.textErrorColor,
+                          ),
+                        )),
+                        DataCell(Text(itemData.lastTradedPrice.toString(),
+                            style: theme.textTheme.bodyMedium)),
                       ]);
                     }).toList(),
                   );

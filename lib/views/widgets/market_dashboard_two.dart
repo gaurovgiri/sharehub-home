@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class MarketDashBoardTwo extends StatelessWidget {
   const MarketDashBoardTwo({super.key});
@@ -11,6 +10,7 @@ class MarketDashBoardTwo extends StatelessWidget {
     final market = Get.find<MarketDashboardViewModel>();
     final ScrollController scrollController = ScrollController();
     var previous = "Top Turnover";
+    final theme = Theme.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
@@ -23,7 +23,7 @@ class MarketDashBoardTwo extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         child: Card(
           margin: EdgeInsets.zero,
-          color: Colors.white,
+          color: theme.cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
             side: BorderSide(
@@ -60,7 +60,7 @@ class MarketDashBoardTwo extends StatelessWidget {
                                 foregroundColor: Colors.white,
                                 backgroundColor: isSelected
                                     ? Color(0xFF0B3132)
-                                    : Colors.white,
+                                    : Colors.transparent,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
@@ -117,6 +117,7 @@ class MarketDashBoardTwo extends StatelessWidget {
                     ],
                     rows: data!.take(5).map((item) {
                       final itemData = item as dynamic;
+                      final isPositive = itemData.change > 0;
                       return DataRow(cells: [
                         DataCell(Row(
                           children: [
@@ -140,8 +141,18 @@ class MarketDashBoardTwo extends StatelessWidget {
                             ),
                           ],
                         )),
-                        DataCell(Text(itemData.change.toString())),
-                        DataCell(Text('${itemData.changePercent}%')),
+                        DataCell(Text(
+                          itemData.change.toString(),
+                          style: TextStyle(
+                            color: isPositive ? Colors.green : Colors.red,
+                          ),
+                        )),
+                        DataCell(Text(
+                          '${itemData.changePercent}%',
+                          style: TextStyle(
+                            color: isPositive ? Colors.green : Colors.red,
+                          ),
+                        )),
                         DataCell(Text(itemData.lastTradedPrice.toString())),
                       ]);
                     }).toList(),

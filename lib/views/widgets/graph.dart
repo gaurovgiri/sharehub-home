@@ -6,10 +6,9 @@ import 'package:sharehub_home/model/graph_model.dart';
 import 'package:sharehub_home/viewmodel/graph_view_model.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
 import 'package:sharehub_home/views/widgets/labels.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class GraphWidget extends StatelessWidget {
-  GraphWidget({Key? key}) : super(key: key) {
+  GraphWidget({super.key}) {
     Get.put(GraphViewModel());
     Get.put(MarketDashboardViewModel());
   }
@@ -21,8 +20,10 @@ class GraphWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Obx(() {
-      final data = graphData.graphData;
+      final data = graphData.getGraphDataForCurrentSelection();
       if (data.isEmpty) {
         return const Center(child: Text('No data available'));
       }
@@ -43,7 +44,7 @@ class GraphWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25),
               ),
               margin: const EdgeInsets.all(0),
-              color: Colors.white,
+              color: theme.cardColor,
               child: Column(
                 children: [
                   Padding(
@@ -96,7 +97,9 @@ class GraphWidget extends StatelessWidget {
                                     value: market.marketData.value.indices?[0]
                                         .currentValue
                                         .toString(),
-                                    colors: Colors.green,
+                                    colors: market.valueStatus.value
+                                        ? Colors.green
+                                        : Colors.red,
                                   ),
                                   SizedBox(width: 10),
                                   Labels(
@@ -104,22 +107,26 @@ class GraphWidget extends StatelessWidget {
                                     value: market
                                         .marketData.value.indices?[0].change
                                         .toString(),
-                                    colors: Colors.green,
+                                    colors: market.valueStatus.value
+                                        ? Colors.green
+                                        : Colors.red,
                                   ),
                                   SizedBox(width: 10),
                                   Labels(
                                     label: '',
                                     value:
                                         "${market.marketData.value.indices?[0].changePercent.toString()}%",
-                                    colors: Colors.green,
+                                    colors: market.valueStatus.value
+                                        ? Colors.green
+                                        : Colors.red,
                                   ),
                                 ],
                               ),
                               Labels(
                                 label: "",
                                 value:
-                                    "Market ${market.marketData.value.marketStatus?.status}",
-                                colors: Colors.red,
+                                    "${market.marketData.value.marketStatus?.status}",
+                                colors: market.marketStatusColor.value,
                               ),
                             ],
                           ),
@@ -274,10 +281,15 @@ class GraphWidget extends StatelessWidget {
                               spots: _createSpots(data),
                               isCurved: true,
                               gradient: LinearGradient(
-                                colors: [
-                                  Colors.green.withOpacity(0.8),
-                                  Colors.green.withOpacity(0.3),
-                                ],
+                                colors: market.valueStatus.value
+                                    ? [
+                                        Colors.green.withOpacity(0.8),
+                                        Colors.green.withOpacity(0.3)
+                                      ]
+                                    : [
+                                        Colors.red.withOpacity(0.8),
+                                        Colors.red.withOpacity(0.3)
+                                      ],
                               ),
                               barWidth: 2,
                               isStrokeCapRound: true,
@@ -285,10 +297,15 @@ class GraphWidget extends StatelessWidget {
                               belowBarData: BarAreaData(
                                 show: true,
                                 gradient: LinearGradient(
-                                  colors: [
-                                    Colors.green.withOpacity(0.2),
-                                    Colors.green.withOpacity(0.0),
-                                  ],
+                                  colors: market.valueStatus.value
+                                      ? [
+                                          Colors.green.withOpacity(0.2),
+                                          Colors.green.withOpacity(0.0)
+                                        ]
+                                      : [
+                                          Colors.red.withOpacity(0.2),
+                                          Colors.red.withOpacity(0.0)
+                                        ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                 ),
@@ -320,19 +337,12 @@ class GraphWidget extends StatelessWidget {
                                   response.lineBarSpots == null) {
                                 return;
                               }
-                              final value = response.lineBarSpots!.first.y;
-                              final index =
-                                  response.lineBarSpots!.first.x.toInt();
-                              final time = data[index].time;
-                              // Handle touch event
                             },
                           ),
-                          // Add animation
                           showingTooltipIndicators: [],
                         ),
-                        duration: Duration(
-                            milliseconds: 1000), // Add animation duration
-                        curve: Curves.easeInOut, // Add animation curve
+                        duration: Duration(milliseconds: 1000),
+                        curve: Curves.easeInOut,
                       ),
                     ),
                   ),

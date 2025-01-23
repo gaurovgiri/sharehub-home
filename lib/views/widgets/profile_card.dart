@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:sharehub_home/resources/app_theme.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
       child: Card(
-        color: Colors.white,
+        color: theme.cardColor,
         margin: EdgeInsets.only(bottom: 0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: BorderSide(
-            color: Colors.grey,
+            color: AppTheme.borderColor,
             width: 0.5,
             style: BorderStyle.solid,
           ),
@@ -40,12 +42,12 @@ class ProfileCard extends StatelessWidget {
                   const SizedBox(width: 12),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Welcome!",
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black54,
+                          color: theme.textTheme.bodyMedium?.color,
                         ),
                       ),
                       Text(
@@ -53,6 +55,7 @@ class ProfileCard extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
+                          color: theme.textTheme.bodyLarge?.color,
                         ),
                       ),
                     ],
@@ -72,10 +75,10 @@ class ProfileCard extends StatelessWidget {
                     horizontal: 16,
                     vertical: 8,
                   ),
-                  child: const Text(
+                  child: Text(
                     "Free",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppTheme.textAccentColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
