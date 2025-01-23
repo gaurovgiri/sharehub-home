@@ -39,7 +39,7 @@ To get started with the project, follow these steps:
 
 ## Demo
 
-![Demo Video](Scree%20Recording.mp4)
+![Demo Video](Screen%20Recording.mp4)
 
 
 ## Folder Structure
