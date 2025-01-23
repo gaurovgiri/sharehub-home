@@ -16,7 +16,6 @@ class GraphWidget extends StatelessWidget {
   final graphData = Get.find<GraphViewModel>();
   final market = Get.find<MarketDashboardViewModel>();
   final ScrollController scrollController = ScrollController();
-  var previous = "1D";
 
   @override
   Widget build(BuildContext context) {
@@ -390,7 +389,7 @@ class GraphWidget extends StatelessWidget {
                                       curve: Curves.easeInOut,
                                     );
                                   }
-                                  previous = label;
+                                  graphData.previousTimeFrame.value = label;
                                 },
                                 child: Text(
                                   label,

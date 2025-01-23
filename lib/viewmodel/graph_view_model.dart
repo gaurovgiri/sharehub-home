@@ -12,6 +12,7 @@ class GraphViewModel extends GetxController {
   var selectedValue = "NEPSE".obs;
   var graphData = <GraphModel>[].obs;
   final box = GetStorage();
+  var previousTimeFrame = "1D".obs;
 
   final GraphRepo _graphRepo = GraphRepo();
 
@@ -82,6 +83,7 @@ class GraphViewModel extends GetxController {
   }
 
   void updateSelectedTimeFrame(String timeFrame) {
+    previousTimeFrame.value = selectedTimeFrame.value;
     selectedTimeFrame.value = timeFrame;
     if (timeFrame == "1D") {
       fetchGraphData();
