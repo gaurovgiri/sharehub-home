@@ -39,10 +39,7 @@ To get started with the project, follow these steps:
 
 ## Demo
 
-<video width="400" controls>
-    <source src="Screen%20Recording.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+![Demo Video](Scree%20Recording.mp4)
 
 
 ## Folder Structure
