@@ -7,34 +7,42 @@ import 'package:sharehub_home/views/widgets/market_dashboard_two.dart';
 import 'package:sharehub_home/views/widgets/market_summary.dart';
 import 'package:sharehub_home/views/widgets/profile_card.dart';
 import 'package:sharehub_home/views/widgets/watch_list.dart';
+import 'package:sharehub_home/viewmodel/main_screen_view_model.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  MainScreenViewModel get mainScreenController =>
+      Get.find<MainScreenViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: ProfileCard(),
-          ),
-          SliverPersistentHeader(
-            pinned: true, // Makes the header stick to the top
-            delegate: FloatingNavHeaderDelegate(),
-          ),
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                SizedBox(height: 425, child: GraphWidget()),
-                WatchList(),
-                MarketDashBoard(),
-                MarketDashBoardTwo(),
-                MarketSummary(),
-              ],
+      body: RefreshIndicator(
+        onRefresh: mainScreenController.refreshData,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: ProfileCard(),
             ),
-          ),
-        ],
+            SliverPersistentHeader(
+              pinned: true, // Makes the header stick to the top
+              delegate: FloatingNavHeaderDelegate(),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  SizedBox(height: 425, child: GraphWidget()),
+                  WatchList(),
+                  MarketDashBoard(),
+                  MarketDashBoardTwo(),
+                  MarketSummary(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

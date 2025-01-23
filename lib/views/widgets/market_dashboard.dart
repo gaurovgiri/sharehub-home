@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MarketDashBoard extends StatelessWidget {
   const MarketDashBoard({super.key});
@@ -88,10 +88,16 @@ class MarketDashBoard extends StatelessWidget {
                         DataCell(Row(
                           children: [
                             Image.network(
-                                "https://cdn.arthakendra.com/${itemData.icon}",
-                                width: 20,
-                                height: 20),
-                            SizedBox(width: 5),
+                              "https://cdn.arthakendra.com/${itemData.icon}",
+                              width: 20,
+                              height: 20,
+                              errorBuilder: (context, error, stackTrace) {
+                                return SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                );
+                              },
+                            ),
                             Text(
                               itemData.symbol.length > 5
                                   ? '${itemData.symbol.substring(0, 5)}...'

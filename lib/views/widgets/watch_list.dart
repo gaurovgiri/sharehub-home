@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:sharehub_home/model/graph_model.dart';
 import 'package:sharehub_home/viewmodel/graph_view_model.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class WatchList extends StatelessWidget {
   WatchList({super.key}) {
@@ -19,7 +20,7 @@ class WatchList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      var data = graphData.graphData;
+      var data = graphData.graphDataMap["1D_NEPSE"];
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Container(
@@ -39,38 +40,40 @@ class WatchList extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Watch List',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Watch List',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'View All',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.blueAccent,
+                        Text(
+                          'View All',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blueAccent,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 12),
                   CarouselSlider.builder(
                     itemCount: market.marketData.value.topGainers?.length ?? 0,
                     itemBuilder: (context, index, realIndex) {
                       var topGainer =
                           market.marketData.value.topGainers![index];
                       return Container(
-                        width: MediaQuery.of(context).size.width * 0.85,
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -96,15 +99,15 @@ class WatchList extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Image.network(
-                                    "https://cdn.arthakendra.com/${topGainer.icon!}",
-                                    height: 40,
-                                    width: 40,
-                                    fit: BoxFit.cover,
-                                    errorBuilder:
-                                        (context, error, stackTrace) => Icon(
-                                      Icons.error,
-                                      color: Colors.red,
-                                    ),
+                                    "https://cdn.arthakendra.com/${topGainer.icon}",
+                                    width: 20,
+                                    height: 20,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                      );
+                                    },
                                   ),
                                   SizedBox(width: 12),
                                   Column(
@@ -170,9 +173,9 @@ class WatchList extends StatelessWidget {
                                           showTitles: false,
                                           reservedSize: 20,
                                           interval:
-                                              (data.length / 5).ceilToDouble(),
+                                              (data!.length / 5).ceilToDouble(),
                                           getTitlesWidget: (value, meta) {
-                                            if (value.toInt() >= data.length ||
+                                            if (value.toInt() >= data!.length ||
                                                 value.toInt() < 0) {
                                               return const SizedBox.shrink();
                                             }

@@ -7,9 +7,10 @@ import 'package:get_storage/get_storage.dart';
 
 class GraphViewModel extends GetxController {
   var isLoading = false.obs;
-  var graphData = <GraphModel>[].obs;
+  var graphDataMap = <String, List<GraphModel>>{}.obs;
   var selectedTimeFrame = "1D".obs;
   var selectedValue = "NEPSE".obs;
+  var graphData = <GraphModel>[].obs;
   final box = GetStorage();
 
   final GraphRepo _graphRepo = GraphRepo();
@@ -19,18 +20,19 @@ class GraphViewModel extends GetxController {
     readLocalGraphData();
     fetchGraphData();
     super.onInit();
-    // Fetch data every 10 seconds
-    ever(graphData, (_) => storeGraphData());
+    ever(graphDataMap, (_) => storeGraphData());
     fetchGraphDataPeriodically();
   }
 
   void readLocalGraphData() {
-    var localData = box.read('graphData');
-    if (localData != null && localData is List) {
-      print('Local graph data found: $localData');
-      graphData.value = localData
-          .map((e) => GraphModel.fromJson([e["time"], e["value"]], e["type"]))
-          .toList();
+    var localData = box.read('graphDataMap');
+    if (localData != null && localData is Map) {
+      graphDataMap.value = localData.map((key, value) => MapEntry(
+          key,
+          (value as List)
+              .map((e) =>
+                  GraphModel.fromJson([e["time"], e["value"]], e["type"]))
+              .toList()));
     } else {
       print('No local graph data found');
     }
@@ -40,7 +42,8 @@ class GraphViewModel extends GetxController {
     isLoading.value = true;
     var data = await _graphRepo.fetchData(selectedValue.value);
     if (data.isNotEmpty) {
-      graphData.value = data;
+      graphDataMap['1D_${selectedValue.value}'] = data;
+      graphData.value = data; // Update graphData
     }
     isLoading.value = false;
   }
@@ -53,9 +56,9 @@ class GraphViewModel extends GetxController {
   }
 
   void storeGraphData() {
-    var dataToStore = graphData.map((e) => e.toJson()).toList();
-    print('Storing graph data: $dataToStore');
-    box.write('graphData', dataToStore);
+    var dataToStore = graphDataMap.map(
+        (key, value) => MapEntry(key, value.map((e) => e.toJson()).toList()));
+    box.write('graphDataMap', dataToStore);
   }
 
   Future<void> fetchGraphDataForTimeFrame() async {
@@ -63,7 +66,8 @@ class GraphViewModel extends GetxController {
     var data = await _graphRepo.fetchDataForTimeFrame(
         selectedTimeFrame.value, selectedValue.value);
     if (data.isNotEmpty) {
-      graphData.value = data;
+      graphDataMap['${selectedTimeFrame.value}_${selectedValue.value}'] = data;
+      graphData.value = data; // Update graphData
     }
     isLoading.value = false;
   }
@@ -84,5 +88,10 @@ class GraphViewModel extends GetxController {
     } else {
       fetchGraphDataForTimeFrame();
     }
+  }
+
+  List<GraphModel> getGraphDataForCurrentSelection() {
+    return graphDataMap['${selectedTimeFrame.value}_${selectedValue.value}'] ??
+        [];
   }
 }

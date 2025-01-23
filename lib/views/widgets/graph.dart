@@ -6,6 +6,7 @@ import 'package:sharehub_home/model/graph_model.dart';
 import 'package:sharehub_home/viewmodel/graph_view_model.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
 import 'package:sharehub_home/views/widgets/labels.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class GraphWidget extends StatelessWidget {
   GraphWidget({Key? key}) : super(key: key) {
@@ -15,6 +16,8 @@ class GraphWidget extends StatelessWidget {
 
   final graphData = Get.find<GraphViewModel>();
   final market = Get.find<MarketDashboardViewModel>();
+  final ScrollController scrollController = ScrollController();
+  var previous = "1D";
 
   @override
   Widget build(BuildContext context) {
@@ -341,36 +344,55 @@ class GraphWidget extends StatelessWidget {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: ['1D', '1W', '1M', '3M', '1Y'].map((label) {
-                          return Obx(() {
-                            final isSelected =
-                                graphData.selectedTimeFrame.value == label;
-                            return ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                elevation: isSelected ? 5 : 0,
-                                foregroundColor: Colors.white,
-                                backgroundColor: isSelected
-                                    ? Color(0xFF0B3132)
-                                    : Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: ['1D', '1W', '1M', '3M', '1Y'].map((label) {
+                            return Obx(() {
+                              final isSelected =
+                                  graphData.selectedTimeFrame.value == label;
+                              return ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  elevation: isSelected ? 5 : 0,
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: isSelected
+                                      ? Color(0xFF0B3132)
+                                      : Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
                                 ),
-                              ),
-                              onPressed: () {
-                                graphData.updateSelectedTimeFrame(label);
-                              },
-                              child: Text(
-                                label,
-                                style: TextStyle(
-                                    color: isSelected
-                                        ? Colors.white
-                                        : Colors.grey),
-                              ),
-                            );
-                          });
-                        }).toList(),
+                                onPressed: () {
+                                  graphData.updateSelectedTimeFrame(label);
+                                  if (label == "1D") {
+                                    scrollController.animateTo(
+                                      scrollController.position.minScrollExtent,
+                                      duration: Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  }
+                                  if (label == "1Y") {
+                                    scrollController.animateTo(
+                                      scrollController.position.maxScrollExtent,
+                                      duration: Duration(milliseconds: 300),
+                                      curve: Curves.easeInOut,
+                                    );
+                                  }
+                                  previous = label;
+                                },
+                                child: Text(
+                                  label,
+                                  style: TextStyle(
+                                      color: isSelected
+                                          ? Colors.white
+                                          : Colors.grey),
+                                ),
+                              );
+                            });
+                          }).toList(),
+                        ),
                       ),
                     ),
                   )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sharehub_home/viewmodel/market_dashboard_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MarketDashBoardTwo extends StatelessWidget {
   const MarketDashBoardTwo({super.key});
@@ -120,9 +121,16 @@ class MarketDashBoardTwo extends StatelessWidget {
                         DataCell(Row(
                           children: [
                             Image.network(
-                                "https://cdn.arthakendra.com/${itemData.icon}",
-                                width: 20,
-                                height: 20),
+                              "https://cdn.arthakendra.com/${itemData.icon}",
+                              width: 20,
+                              height: 20,
+                              errorBuilder: (context, error, stackTrace) {
+                                return SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                );
+                              },
+                            ),
                             SizedBox(width: 5),
                             Text(
                               itemData.symbol.length > 5
