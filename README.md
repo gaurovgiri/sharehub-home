@@ -39,8 +39,7 @@ To get started with the project, follow these steps:
 
 ## Demo
 
-![Demo Video](Screen%20Recording.mp4)
-
+https://github.com/user-attachments/assets/b75bef70-8bba-42c4-a553-9235ce805c5b
 
 ## Folder Structure
 ```bash
